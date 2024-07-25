@@ -31,7 +31,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const Directionality(
+        textDirection: TextDirection.rtl,
+        child: MyHomePage(title: 'صفحه اصلی'),
+      ),
     );
   }
 }
@@ -55,7 +58,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  bool _isSwitched = false; // State for the switch
+  void _toggleSwitch(bool value) {
+    setState(() {
+      _isSwitched = value;
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -64,7 +72,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
     });
   }
 
@@ -103,14 +110,89 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 200,
+                height: 200,
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 0.0),
+              child: SizedBox(
+                child: TextField(
+                  textAlign: TextAlign.right,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'نام کاربری',
+                      alignLabelWithHint: true),
+                ),
+              ),
+            ),
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30.0, vertical: 0.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text(':کانال ارتباطی'),
+                        const SizedBox(width: 10),
+                        const Text('پیامک'),
+                        const SizedBox(width: 10),
+                        Switch(value: _isSwitched, onChanged: _toggleSwitch),
+                        const SizedBox(
+                            width: 10), // Space between switch and next text
+                        const Text('اینترنتی'),
+                      ],
+                    ),
+                  ],
+                )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 0.0),
+                    child: SizedBox(
+                      height: 70,
+                      width: 350,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(10), // حذف حاشیه گرد
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: const Text('ورود'),
+                      ),
+                    ))
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 0.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'بازیابی رمز عبور',
+                    style: TextStyle(
+                        fontSize: 18,
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 2),
+                  )
+                ],
+              ),
+            ),
+             const Padding(
+              padding: EdgeInsets.all(30.0),
+              child:Icon(Icons.fingerprint,size: 100,color: Color.fromARGB(255, 42, 197, 42)) ,
             ),
           ],
         ),
