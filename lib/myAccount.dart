@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'appBar.dart';
+import 'footer.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class MyAccount extends StatefulWidget {
@@ -83,12 +84,14 @@ class _MyAccountState extends State<MyAccount> {
                 );
               },
             ),
+                  bottomNavigationBar: const Footer(),
+
     );
   }
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: MyAccount(),
   ));
 }

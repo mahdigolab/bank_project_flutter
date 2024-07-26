@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 import 'myAccount.dart';
 import 'myCards.dart';
 import 'home.dart';
 
-class CustomFooter extends StatefulWidget {
-  const CustomFooter({super.key});
+class Footer extends StatefulWidget {
+  const Footer({super.key});
 
   @override
-  _CustomFooterState createState() => _CustomFooterState();
+  _FooterState createState() => _FooterState();
 }
 
-class _CustomFooterState extends State<CustomFooter> {
-  int _selectedIndex = 0; // اندیس کلید انتخاب شده
+class _FooterState extends State<Footer> {
+  int _selectedIndex = 2; // اندیس کلید انتخاب شده
 
   @override
   Widget build(BuildContext context) {

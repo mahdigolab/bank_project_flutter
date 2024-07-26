@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:bank_project_flutter/footer.dart'; // فرض بر این است که CustomFooter در این فایل است
 import 'appBar.dart';
+import 'footer.dart';
+
 
 // مدل داده
 class IconDataModel {
@@ -146,20 +147,24 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Material(
-                color: Colors.green,
-                shape: const CircleBorder(), // دایره‌ای کردن دکمه
-                elevation: 5.0,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(50.0), // دایره‌ای کردن دکمه
-                  onTap: item.function, // فراخوانی تابع
-                  child: Container(
-                    padding: const EdgeInsets.all(12.0), // فاصله بین آیکون و لبه‌های دکمه
+              // تنظیم اندازه کلید و استفاده از BoxConstraints
+              ConstrainedBox(
+                constraints: const BoxConstraints.tightFor(
+                  width: 60.0, // عرض دکمه
+                  height: 60.0, // ارتفاع دکمه
+                ),
+                child: Material(
+                  color: Colors.green,
+                  shape: const CircleBorder(), // دایره‌ای کردن دکمه
+                  elevation: 5.0,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(40.0), // دایره‌ای کردن دکمه
+                    onTap: item.function, // فراخوانی تابع
                     child: Center(
                       child: Icon(
                         item.icon,
                         color: Colors.white,
-                        size: 40.0, // اندازه آیکون
+                        size: 30.0, // اندازه آیکون
                       ),
                     ),
                   ),
@@ -184,7 +189,7 @@ class HomePage extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: const CustomFooter(),
+      bottomNavigationBar: const Footer(),
     );
   }
 }
