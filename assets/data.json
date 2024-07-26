@@ -1,0 +1,23 @@
+[
+    {
+      "icon": "star",
+      "title": "Star Icon",
+      "function": "showStar"
+    },
+    {
+      "icon": "favorite",
+      "title": "Favorite Icon",
+      "function": "showFavorite"
+    },
+    {
+      "icon": "thumb_up",
+      "title": "Thumb Up Icon",
+      "function": "showThumbUp"
+    },
+    {
+      "icon": "thumb_up",
+      "title": "Thumb Up Icon",
+      "function": "showThumbUp"
+    }
+  ]
+  
