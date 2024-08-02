@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'appBar.dart';
-import 'footer.dart';
-
 
 // مدل داده
 class IconDataModel {
@@ -9,7 +7,8 @@ class IconDataModel {
   final String title;
   final Function() function; // تابع برای عملکرد
 
-  IconDataModel({required this.icon, required this.title, required this.function});
+  IconDataModel(
+      {required this.icon, required this.title, required this.function});
 }
 
 // داده‌های نمونه
@@ -158,7 +157,8 @@ class HomePage extends StatelessWidget {
                   shape: const CircleBorder(), // دایره‌ای کردن دکمه
                   elevation: 5.0,
                   child: InkWell(
-                    borderRadius: BorderRadius.circular(40.0), // دایره‌ای کردن دکمه
+                    borderRadius:
+                        BorderRadius.circular(40.0), // دایره‌ای کردن دکمه
                     onTap: item.function, // فراخوانی تابع
                     child: Center(
                       child: Icon(
@@ -174,7 +174,8 @@ class HomePage extends StatelessWidget {
               Container(
                 width: double.infinity, // به عرض کل فضای موجود
                 alignment: Alignment.center, // تراز کردن متن
-                padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
                 child: Text(
                   item.title,
                   textAlign: TextAlign.center,
@@ -189,7 +190,7 @@ class HomePage extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: const Footer(),
+      // bottomNavigationBar: const Footer(),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:bank_project_flutter/home.dart';
+import 'package:bank_project_flutter/MainPage.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -37,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       _isSwitched = value;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,12 +88,13 @@ class _LoginPageState extends State<LoginPage> {
                     //   borderSide: BorderSide(color: Colors.green), // رنگ حاشیه
                     // ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green, width: 2.0), // رنگ و ضخامت حاشیه هنگام فوکوس
+                      borderSide: BorderSide(
+                          color: Colors.green,
+                          width: 2.0), // رنگ و ضخامت حاشیه هنگام فوکوس
                     ),
                     labelText: 'کلمه عبور',
                     labelStyle: TextStyle(color: Colors.green), // رنگ متن label
                     alignLabelWithHint: true,
-                    
                   ),
                   // cursorColor: Colors.green,
                   cursorWidth: 1,
@@ -100,14 +102,16 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 0.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 0.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Text('کانال ارتباطی:', style: TextStyle(color: Colors.green, fontSize: 16)),
+                      const Text('کانال ارتباطی:',
+                          style: TextStyle(color: Colors.green, fontSize: 16)),
                       const SizedBox(width: 10),
                       const Text('پیامک', style: TextStyle(fontSize: 16)),
                       const SizedBox(width: 10),
@@ -127,7 +131,8 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 0.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 30.0, vertical: 0.0),
                   child: SizedBox(
                     height: 70,
                     width: 350,
@@ -135,16 +140,19 @@ class _LoginPageState extends State<LoginPage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green, // رنگ پس‌زمینه دکمه
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // حذف حاشیه گرد
+                          borderRadius:
+                              BorderRadius.circular(10), // حذف حاشیه گرد
                         ),
                       ),
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const HomePage()),
+                          MaterialPageRoute(
+                              builder: (context) => const MainPage()),
                         );
                       },
-                      child: const Text('ورود', style: TextStyle(color: Colors.white, fontSize: 24)),
+                      child: const Text('ورود',
+                          style: TextStyle(color: Colors.white, fontSize: 24)),
                     ),
                   ),
                 ),

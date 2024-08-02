@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'appBar.dart';
-import 'footer.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class MyCards extends StatefulWidget {
@@ -25,14 +24,16 @@ class _MyCardsState extends State<MyCards> {
     final String jsonString = await rootBundle.loadString('assets/cards.json');
     final List<dynamic> jsonResponse = json.decode(jsonString);
     setState(() {
-      accountNumberList = jsonResponse.map((data) => {'title': data['title'].toString()}).toList();
+      accountNumberList = jsonResponse
+          .map((data) => {'title': data['title'].toString()})
+          .toList();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(
+      appBar: CustomAppBar(
         title: 'خانه',
         leftIcon: Icons.arrow_back_ios,
         rightIcon: Icons.menu,
@@ -50,7 +51,8 @@ class _MyCardsState extends State<MyCards> {
               itemCount: accountNumberList.length,
               itemBuilder: (context, index) {
                 final accountData = accountNumberList[index];
-                final accountNumber = accountData['title'] ?? 'شماره حساب موجود نیست';
+                final accountNumber =
+                    accountData['title'] ?? 'شماره حساب موجود نیست';
 
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),
@@ -84,7 +86,7 @@ class _MyCardsState extends State<MyCards> {
                 );
               },
             ),
-                  bottomNavigationBar: const Footer(),
+      // bottomNavigationBar: const Footer(),
     );
   }
 }

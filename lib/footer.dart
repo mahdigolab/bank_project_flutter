@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'myAccount.dart';
-import 'myCards.dart';
-import 'home.dart';
 
-class Footer extends StatefulWidget {
-  const Footer({super.key});
+class Footer extends StatelessWidget {
+  final int selectedIndex;
+  final Function(int) onItemTapped;
 
-  @override
-  _FooterState createState() => _FooterState();
-}
-
-class _FooterState extends State<Footer> {
-  int _selectedIndex = 2; // اندیس کلید انتخاب شده
+  const Footer(
+      {super.key, required this.selectedIndex, required this.onItemTapped});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +17,7 @@ class _FooterState extends State<Footer> {
           // نشانگر انتخاب
           AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
-            left: _selectedIndex * (MediaQuery.of(context).size.width / 3),
+            left: selectedIndex * (MediaQuery.of(context).size.width / 3),
             top: 0, // تغییر به بالا برای قرار دادن نشانگر بالای کلیدها
             child: Container(
               width: MediaQuery.of(context).size.width / 3,
@@ -35,20 +29,20 @@ class _FooterState extends State<Footer> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _buildFooterButton(
-                  icon: Icons.home,
-                  label: 'کارت های من',
-                  index: 0,
-                  page: const MyCards()),
+                icon: Icons.credit_card,
+                label: 'کارت های من',
+                index: 0,
+              ),
               _buildFooterButton(
-                  icon: Icons.search,
-                  label: 'حساب های من',
-                  index: 1,
-                  page: const MyAccount()),
+                icon: Icons.account_circle,
+                label: 'حساب های من',
+                index: 1,
+              ),
               _buildFooterButton(
-                  icon: Icons.notifications,
-                  label: 'میانبر ها',
-                  index: 2,
-                  page: const HomePage()),
+                icon: Icons.home,
+                label: 'میانبر ها',
+                index: 2,
+              ),
             ],
           ),
         ],
@@ -56,27 +50,15 @@ class _FooterState extends State<Footer> {
     );
   }
 
-  // تابع برای هدایت به صفحات جدید
-  void _navigateToPage(Widget page) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => page),
-    );
-  }
-
   Widget _buildFooterButton({
     required IconData icon,
     required String label,
     required int index,
-    required Widget page, // پارامتر جدید برای صفحه مقصد
   }) {
     return Expanded(
       child: InkWell(
         onTap: () {
-          setState(() {
-            _selectedIndex = index;
-          });
-          _navigateToPage(page); // هدایت به صفحه مقصد
+          onItemTapped(index); // استفاده از تابع برای تغییر صفحه
         },
         child: Container(
           padding: const EdgeInsets.symmetric(
