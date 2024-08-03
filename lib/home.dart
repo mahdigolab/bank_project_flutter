@@ -1,3 +1,4 @@
+import 'package:bank_project_flutter/mobile.dart';
 import 'package:flutter/material.dart';
 import 'appBar.dart';
 
@@ -5,111 +6,86 @@ import 'appBar.dart';
 class IconDataModel {
   final IconData icon;
   final String title;
-  final Function() function; // تابع برای عملکرد
+  final Widget Function(BuildContext) pageBuilder; // ویجت سازنده صفحه
 
-  IconDataModel(
-      {required this.icon, required this.title, required this.function});
+  IconDataModel({
+    required this.icon,
+    required this.title,
+    required this.pageBuilder,
+  });
 }
 
 // داده‌های نمونه
 final List<IconDataModel> iconDataList = [
   IconDataModel(
-    icon: Icons.star,
+    icon: Icons.sync_alt,
     title: 'پرداخت لحظه ای(پل)',
-    function: () {
-      print("Star icon pressed");
-    },
+    pageBuilder: (context) => const Mobile(), // صفحه مقصد
   ),
   IconDataModel(
-    icon: Icons.star,
+    icon: Icons.sync_alt,
     title: 'انتقال وجه داخلی',
-    function: () {
-      print("Star icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'انتقال وجه داخلی'),
   ),
   IconDataModel(
-    icon: Icons.star,
+    icon: Icons.credit_card,
     title: 'کارت به کارت',
-    function: () {
-      print("Star icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'کارت به کارت'),
   ),
   IconDataModel(
-    icon: Icons.favorite,
+    icon: Icons.wallet_outlined,
     title: 'صورت حساب',
-    function: () {
-      print("Favorite icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'صورت حساب'),
   ),
   IconDataModel(
-    icon: Icons.favorite,
+    icon: Icons.playlist_add_check_outlined,
     title: 'صیاد(پیچک)',
-    function: () {
-      print("Favorite icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'صیاد(پیچک)'),
   ),
   IconDataModel(
-    icon: Icons.favorite,
+    icon: Icons.sync_alt,
     title: 'انتقال وجه پایا/ساتنا',
-    function: () {
-      print("Favorite icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'انتقال وجه پایا/ساتنا'),
   ),
   IconDataModel(
-    icon: Icons.thumb_up,
+    icon: Icons.assured_workload_outlined,
     title: 'رهگیری پایا/ساتنا',
-    function: () {
-      print("Thumb Up icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'رهگیری پایا/ساتنا'),
   ),
   IconDataModel(
-    icon: Icons.thumb_up,
+    icon: Icons.payments_outlined,
     title: 'پرداخت قسط',
-    function: () {
-      print("Thumb Up icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'پرداخت قسط'),
   ),
   IconDataModel(
-    icon: Icons.thumb_up,
+    icon: Icons.sim_card,
     title: 'قبض موبایل',
-    function: () {
-      print("Thumb Up icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'قبض موبایل'),
   ),
   IconDataModel(
-    icon: Icons.thumb_up,
+    icon: Icons.sim_card_alert_outlined,
     title: 'شارژ مستقیم',
-    function: () {
-      print("Thumb Up icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'شارژ مستقیم'),
   ),
   IconDataModel(
-    icon: Icons.thumb_up,
+    icon: Icons.qr_code_2_outlined,
     title: 'شناسه قبض و پرداخت',
-    function: () {
-      print("Thumb Up icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'شناسه قبض و پرداخت'),
   ),
   IconDataModel(
-    icon: Icons.thumb_up,
+    icon: Icons.lock_reset_outlined,
     title: 'رمز یکبار مصرف اینترنت بانک',
-    function: () {
-      print("Thumb Up icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'رمز یکبار مصرف اینترنت بانک'),
   ),
   IconDataModel(
-    icon: Icons.thumb_up,
+    icon: Icons.lock_reset_outlined,
     title: 'رمز یکبار مصرف حسابی',
-    function: () {
-      print("Thumb Up icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'رمز یکبار مصرف حسابی'),
   ),
   IconDataModel(
-    icon: Icons.thumb_up,
+    icon: Icons.query_stats_rounded,
     title: 'استعلام شبا',
-    function: () {
-      print("Thumb Up icon pressed");
-    },
+    pageBuilder: (context) => DummyScreen(title: 'استعلام شبا'),
   ),
   // افزودن داده‌های بیشتر در صورت نیاز
 ];
@@ -159,7 +135,12 @@ class HomePage extends StatelessWidget {
                   child: InkWell(
                     borderRadius:
                         BorderRadius.circular(40.0), // دایره‌ای کردن دکمه
-                    onTap: item.function, // فراخوانی تابع
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: item.pageBuilder),
+                      );
+                    }, // فراخوانی تابع
                     child: Center(
                       child: Icon(
                         item.icon,
@@ -191,6 +172,24 @@ class HomePage extends StatelessWidget {
         },
       ),
       // bottomNavigationBar: const Footer(),
+    );
+  }
+}
+
+class DummyScreen extends StatelessWidget {
+  final String title;
+
+  DummyScreen({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Center(
+        child: Text('صفحه $title'),
+      ),
     );
   }
 }
