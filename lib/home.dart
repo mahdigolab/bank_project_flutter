@@ -1,4 +1,5 @@
 import 'package:bank_project_flutter/mobile.dart';
+import 'package:bank_project_flutter/shaba.dart';
 import 'package:flutter/material.dart';
 import 'appBar.dart';
 
@@ -85,7 +86,7 @@ final List<IconDataModel> iconDataList = [
   IconDataModel(
     icon: Icons.query_stats_rounded,
     title: 'استعلام شبا',
-    pageBuilder: (context) => DummyScreen(title: 'استعلام شبا'),
+    pageBuilder: (context) => const Shaba(),
   ),
   // افزودن داده‌های بیشتر در صورت نیاز
 ];

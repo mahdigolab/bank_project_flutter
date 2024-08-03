@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'appBar.dart';
 
-class Mobile extends StatefulWidget {
-  const Mobile({super.key});
+class Shaba extends StatefulWidget {
+  const Shaba({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _MobileState createState() => _MobileState();
+  _ShabaState createState() => _ShabaState();
 }
 
-class _MobileState extends State<Mobile> {
+// ignore: camel_case_types
+class _ShabaState extends State<Shaba> {
   int _selectedValue = 1;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
       appBar: CustomAppBar(
         title: 'خانه',
         leftIcon: Icons.arrow_back_ios,
@@ -39,7 +39,7 @@ class _MobileState extends State<Mobile> {
             const SizedBox(height: 16),
             const Center(
               child: Text(
-                'شماره موبایل خود را وارد کنید',
+                'لطفا اطلاعات حساب موردنظر را وارد کنید',
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -54,53 +54,50 @@ class _MobileState extends State<Mobile> {
                   children: [
                     Icon(Icons.person),
                     SizedBox(width: 8),
-                    Icon(Icons.keyboard),
-                    SizedBox(width: 8),
-                    Icon(Icons.phone),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Radio(
-                      value: 2,
-                      groupValue: _selectedValue,
-                      onChanged: (val) {
-                        setState(() {
-                          _selectedValue = val as int;
-                        });
-                      },
-                    ),
-                    const Text(
-                      'میان دوره',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Text(
-                      'پایان دوره',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    Radio(
-                      value: 1,
-                      groupValue: _selectedValue,
-                      onChanged: (val) {
-                        setState(() {
-                          _selectedValue = val as int;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Row(
+            //       children: [
+            //         Radio(
+            //           value: 2,
+            //           groupValue: _selectedValue,
+            //           onChanged: (val) {
+            //             setState(() {
+            //               _selectedValue = val as int;
+            //             });
+            //           },
+            //         ),
+            //         const Text(
+            //           'میان دوره',
+            //           style: TextStyle(fontSize: 16),
+            //         ),
+            //       ],
+            //     ),
+            //     Row(
+            //       children: [
+            //         const Text(
+            //           'پایان دوره',
+            //           style: TextStyle(fontSize: 16),
+            //         ),
+            //         Radio(
+            //           value: 1,
+            //           groupValue: _selectedValue,
+            //           onChanged: (val) {
+            //             setState(() {
+            //               _selectedValue = val as int;
+            //             });
+            //           },
+            //         ),
+            //       ],
+            //     ),
+            //   ],
+            // ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {},
