@@ -16,7 +16,7 @@ class _MobileState extends State<Mobile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'خانه',
+        title: 'قبض موبایل',
         leftIcon: Icons.arrow_back_ios,
         rightIcon: Icons.menu,
         onLeftIconPressed: () {
@@ -33,7 +33,7 @@ class _MobileState extends State<Mobile> {
           children: [
             const SizedBox(height: 40),
             const Center(
-              child: Icon(Icons.book,
+              child: Icon(Icons.sim_card,
                   size: 50, color: Colors.green), // آیکون کوچک‌تر
             ),
             const SizedBox(height: 16),
@@ -54,9 +54,9 @@ class _MobileState extends State<Mobile> {
                   children: [
                     Icon(Icons.person),
                     SizedBox(width: 8),
-                    Icon(Icons.keyboard),
+                    Icon(Icons.sim_card),
                     SizedBox(width: 8),
-                    Icon(Icons.phone),
+                    Icon(Icons.touch_app_sharp),
                   ],
                 ),
               ),

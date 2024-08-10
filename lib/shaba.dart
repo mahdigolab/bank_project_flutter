@@ -14,9 +14,9 @@ class _ShabaState extends State<Shaba> {
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
+    return Scaffold(
       appBar: CustomAppBar(
-        title: 'خانه',
+        title: 'استعلام شبا',
         leftIcon: Icons.arrow_back_ios,
         rightIcon: Icons.menu,
         onLeftIconPressed: () {
@@ -33,7 +33,7 @@ class _ShabaState extends State<Shaba> {
           children: [
             const SizedBox(height: 40),
             const Center(
-              child: Icon(Icons.book,
+              child: Icon(Icons.query_stats_rounded,
                   size: 50, color: Colors.green), // آیکون کوچک‌تر
             ),
             const SizedBox(height: 16),
@@ -47,8 +47,15 @@ class _ShabaState extends State<Shaba> {
             TextFormField(
               textAlign: TextAlign.right,
               decoration: const InputDecoration(
+                labelStyle: TextStyle(color: Colors.green), // رنگ متن label
+                alignLabelWithHint: true,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Colors.green,
+                      width: 2.0), // رنگ و ضخامت حاشیه هنگام فوکوس
+                ),
                 hintText: 'شماره تلفن',
-                border: OutlineInputBorder(),
+                // border: OutlineInputBorder(),
                 prefixIcon: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

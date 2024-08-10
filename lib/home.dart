@@ -61,7 +61,7 @@ final List<IconDataModel> iconDataList = [
   IconDataModel(
     icon: Icons.sim_card,
     title: 'قبض موبایل',
-    pageBuilder: (context) => DummyScreen(title: 'قبض موبایل'),
+    pageBuilder: (context) => const Mobile(),
   ),
   IconDataModel(
     icon: Icons.sim_card_alert_outlined,
